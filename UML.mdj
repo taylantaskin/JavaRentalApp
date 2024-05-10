@@ -7263,11 +7263,10 @@
 								"$ref": "AAAAAAGPGx+5jBQjI+E="
 							},
 							"font": "Arial;13;0",
-							"left": 392,
-							"top": 720,
+							"left": 584,
+							"top": 848,
 							"width": 264,
-							"height": 130,
-							"text": "Ask\n- Rental compilited.\n- RentalInfo has to have Item and Renatl or Member"
+							"height": 130
 						}
 					]
 				},
