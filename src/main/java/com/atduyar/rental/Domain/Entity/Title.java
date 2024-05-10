@@ -82,11 +82,11 @@ public abstract class Title {
 
     public int getRentalDuration() {
         switch (type) {
-            case TitleType.NORMAL:
+            case NORMAL:
                 return 14;
-            case TitleType.NEW_RELEASE:
+            case NEW_RELEASE:
                 return 7;
-            case TitleType.PROMOTIONAL:
+            case PROMOTIONAL:
                 return 20;
             default:
                 throw new UnsupportedOperationException("unsupported titletype");
