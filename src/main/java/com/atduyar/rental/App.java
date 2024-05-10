@@ -34,14 +34,20 @@ public class App {
 
 
         System.out.println(game1.getPrice());
-        System.out.println(game1.getRentalDuration());
+        System.out.println(music1.getPrice());
 
 
         Rental rental = new Rental(member, store);
         rental.addItem(game1);
         rental.addItem(music1);
+        System.out.println(rental.getPrice());
         rental.complete();
         superRent.addRental(rental);
+
+        Rental rental1 = new Rental(member, store);
+        rental1.addItem(game2);
+        rental1.complete();
+        superRent.addRental(rental1);
 
         System.out.println(rental);
     }

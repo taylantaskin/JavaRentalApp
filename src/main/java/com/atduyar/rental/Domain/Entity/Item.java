@@ -57,8 +57,8 @@ public class Item {
     public int getRentalDuration() {
         return title.getRentalDuration();
     }
-    // public double getLateFeePerDay(int day){
-    //
-    // }
+     public double getLateFeePerDay(long day){
+        return title.getLateFeePerDay(day);
+     }
 
 }

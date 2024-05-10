@@ -85,11 +85,7 @@ public class Music extends Title {
     }
 
     @Override
-    public double getLateFeePerDay(int day) {
-        int price = 0;
-
-        // calculate with day
-
-        return price;
+    public double getLateFeePerDay(long day) {
+        return day*1.5;
     }
 }

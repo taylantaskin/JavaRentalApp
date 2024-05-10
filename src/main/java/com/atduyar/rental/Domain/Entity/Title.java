@@ -20,7 +20,7 @@ public abstract class Title {
 
     public abstract int getPrice();
 
-    public abstract double getLateFeePerDay(int day);
+    public abstract double getLateFeePerDay(long day);
 
     public int getRentalCode() {
         return rentalCode;

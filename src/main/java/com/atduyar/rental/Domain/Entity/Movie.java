@@ -16,12 +16,8 @@ public class Movie extends Title {
     }
 
     @Override
-    public double getLateFeePerDay(int day) {
-        int price = 0;
-
-        // calculate with day
-
-        return price;
+    public double getLateFeePerDay(long day) {
+        return day*3;
     }
 
     public Movie(int rentalCode, String name, String description, TitleType type, String director) {

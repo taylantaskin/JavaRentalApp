@@ -2,6 +2,7 @@ package com.atduyar.rental.Domain.Entity;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class RentalInfo {
     private Date dueDate;
@@ -30,5 +31,13 @@ public class RentalInfo {
 
     public Rental getRental() {
         return rental;
+    }
+    public double returnItem(){
+        dateReturned = new Date();
+        if(dateReturned.getTime() > dueDate.getTime()){
+            long lateDay = TimeUnit.DAYS.convert(dateReturned.getTime() - dueDate.getTime(),TimeUnit.MILLISECONDS);
+            return item.getLateFeePerDay(lateDay);
+        }
+        return 0;
     }
 }
