@@ -8,51 +8,33 @@ public class SuperRent {
     private List<DailyLog> dailyLogs;
     private List<Rental> rentals;
     private List<Store> stores;
-
-    Catalog catalog;
-
-    public SuperRent() {
-    }
+    private Catalog catalog;
 
     public SuperRent(List<Member> members, List<DailyLog> dailyLogs, List<Rental> rentals, List<Store> stores,
-            Catalog catalog) {
+                     Catalog catalog) {
         this.members = members;
         this.dailyLogs = dailyLogs;
         this.rentals = rentals;
         this.stores = stores;
         this.catalog = catalog;
     }
+    public SuperRent() {
+    }
 
     public List<Member> getMembers() {
         return members;
-    }
-
-    public void setMembers(List<Member> members) {
-        this.members = members;
     }
 
     public List<DailyLog> getDailyLogs() {
         return dailyLogs;
     }
 
-    public void setDailyLogs(List<DailyLog> dailyLogs) {
-        this.dailyLogs = dailyLogs;
-    }
-
     public List<Rental> getRentals() {
         return rentals;
     }
 
-    public void setRentals(List<Rental> rentals) {
-        this.rentals = rentals;
-    }
-
     public List<Store> getStores() {
         return stores;
-    }
-
-    public void setStores(List<Store> stores) {
-        this.stores = stores;
     }
 
     public Catalog getCatalog() {

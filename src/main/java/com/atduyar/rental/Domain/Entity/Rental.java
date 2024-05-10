@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Objects;
 
 public class Rental {
+    /**
+     * rentin tamamlandığı zaman
+     */
     private Date rentalDate;
     private Member member;
     private Store store;
@@ -28,7 +31,12 @@ public class Rental {
     }
 
     public void addItem(Item item) {
-        this.items.add(item);
+        for (Item i : items) {
+            if (item.getSerialNumber() == i.getSerialNumber()) {
+                return;
+            }
+        }
+        items.add(item);
     }
 
     public void removeItem(Item item) {
@@ -37,8 +45,10 @@ public class Rental {
 
     public void complete() {
         this.rentalDate = new Date();
-        for (Item item : items) {
-            infos.add(new RentalInfo(item, this));
+        for (Item item: items){
+            RentalInfo ri = new RentalInfo(item, this);
+            this.infos.add(ri);
+            store.removeItem(item);
         }
     }
 
@@ -81,7 +91,7 @@ public class Rental {
         }
         /*
          * for (int i;i<items.size();i++){
-         * Item item = items[i]
+         * total = total + items.get(i).getPrice();
          */
         return total;
     }

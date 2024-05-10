@@ -34,7 +34,7 @@ public class Item {
         if (o == null || getClass() != o.getClass())
             return false;
         Item item = (Item) o;
-        return serialNumber == item.serialNumber && Objects.equals(title, item.title);
+        return serialNumber == item.serialNumber ;
     }
 
     @Override

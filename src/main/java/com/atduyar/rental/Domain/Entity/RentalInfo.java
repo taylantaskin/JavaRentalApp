@@ -27,4 +27,8 @@ public class RentalInfo {
                 ", item=" + item.getTitle().getName() +
                 '}';
     }
+
+    public Rental getRental() {
+        return rental;
+    }
 }

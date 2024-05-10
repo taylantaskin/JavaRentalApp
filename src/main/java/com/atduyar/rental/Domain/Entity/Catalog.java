@@ -1,5 +1,6 @@
 package com.atduyar.rental.Domain.Entity;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -11,8 +12,17 @@ public class Catalog {
         this.name = name;
         this.titles = titles;
     }
+    public Catalog(String name) {
+        this.name = name;
+        this.titles = new ArrayList<>();
+    }
 
-    public Catalog() {
+    public void addTitle(Title title) {
+        titles.add(title);
+    }
+
+    public void removeTitle(Title title) {
+        titles.remove(title);
     }
 
     public String getName() {
@@ -25,10 +35,6 @@ public class Catalog {
 
     public List<Title> getTitles() {
         return titles;
-    }
-
-    public void setTitles(List<Title> titles) {
-        this.titles = titles;
     }
 
     @Override

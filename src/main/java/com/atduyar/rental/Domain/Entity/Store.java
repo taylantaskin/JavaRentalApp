@@ -9,14 +9,21 @@ public class Store {
     private String phone;
     private String location;
     private String manager;
-    List<Item> items;
+    private List<Item> stocks;
 
     public Store(String name, String phone, String location, String manager) {
         this.name = name;
         this.phone = phone;
         this.location = location;
         this.manager = manager;
-        this.items = new ArrayList<>();
+        this.stocks = new ArrayList<>();
+    }
+    public void storeItem(Item item){
+        stocks.add(item);
+    }
+
+    public void removeItem(Item item){
+        stocks.remove(item);
     }
 
     public String getName() {
@@ -51,12 +58,12 @@ public class Store {
         this.manager = manager;
     }
 
-    public List<Item> getItems() {
-        return items;
+    public List<Item> getStocks() {
+        return stocks;
     }
 
-    public void setItems(List<Item> items) {
-        this.items = items;
+    public void setStocks(List<Item> stocks) {
+        this.stocks = stocks;
     }
 
     @Override
@@ -68,12 +75,12 @@ public class Store {
         Store store = (Store) o;
         return Objects.equals(name, store.name) && Objects.equals(phone, store.phone)
                 && Objects.equals(location, store.location) && Objects.equals(manager, store.manager)
-                && Objects.equals(items, store.items);
+                && Objects.equals(stocks, store.stocks);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, phone, location, manager, items);
+        return Objects.hash(name, phone, location, manager, stocks);
     }
 
     @Override
@@ -83,7 +90,7 @@ public class Store {
                 ", phone='" + phone + '\'' +
                 ", location='" + location + '\'' +
                 ", manager='" + manager + '\'' +
-                ", items=" + items +
+                ", items=" + stocks +
                 '}';
     }
 }
