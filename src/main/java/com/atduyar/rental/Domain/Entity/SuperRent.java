@@ -1,5 +1,6 @@
 package com.atduyar.rental.Domain.Entity;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -11,7 +12,7 @@ public class SuperRent {
     private Catalog catalog;
 
     public SuperRent(List<Member> members, List<DailyLog> dailyLogs, List<Rental> rentals, List<Store> stores,
-            Catalog catalog) {
+                     Catalog catalog) {
         this.members = members;
         this.dailyLogs = dailyLogs;
         this.rentals = rentals;
@@ -20,6 +21,11 @@ public class SuperRent {
     }
 
     public SuperRent() {
+        members = new ArrayList<>();
+        dailyLogs = new ArrayList<>();
+        rentals = new ArrayList<>();
+        stores = new ArrayList<>();
+        catalog = null;
     }
 
     public void addMember(Member member) {
@@ -28,14 +34,6 @@ public class SuperRent {
 
     public void removeMember(Member member) {
         members.remove(member);
-    }
-
-    public void addDailyLog(DailyLog dailyLog) {
-        dailyLogs.add(dailyLog);
-    }
-
-    public void removeDailyLog(DailyLog dailyLog) {
-        dailyLogs.remove(dailyLog);
     }
 
     public void addRental(Rental rental) {

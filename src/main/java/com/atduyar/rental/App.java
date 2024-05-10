@@ -8,11 +8,16 @@ public class App {
         SuperRent superRent =new SuperRent();
         Store store = new Store("aralgame", "90554", "bosna", "Taylan");
         Catalog catalog = new Catalog("Summer Catalaog");
+        superRent.addStore(store);
+
+        Member member = new Member(1L, "Ahmet", "ılıca", "90535");
+        superRent.addMember(member);
 
         Title god = new Game("god of war", "action game", 1, TitleType.NEW_RELEASE, "SONY", 2022);
         catalog.addTitle(god);
         Title moz = new Music(2, "Mozart", "clasic", TitleType.NORMAL, "NONE", "Mozart", 3000, 13);
         catalog.addTitle(moz);
+        superRent.setCatalog(catalog);
 
         Item game1 = new Item(1114, god);
         store.storeItem(game1);
@@ -31,12 +36,12 @@ public class App {
         System.out.println(game1.getPrice());
         System.out.println(game1.getRentalDuration());
 
-        Member member = new Member(1L, "Ahmet", "ılıca", "90535");
 
         Rental rental = new Rental(member, store);
         rental.addItem(game1);
         rental.addItem(music1);
         rental.complete();
+        superRent.addRental(rental);
 
         System.out.println(rental);
     }
