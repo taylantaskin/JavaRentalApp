@@ -11,14 +11,47 @@ public class SuperRent {
     private Catalog catalog;
 
     public SuperRent(List<Member> members, List<DailyLog> dailyLogs, List<Rental> rentals, List<Store> stores,
-                     Catalog catalog) {
+            Catalog catalog) {
         this.members = members;
         this.dailyLogs = dailyLogs;
         this.rentals = rentals;
         this.stores = stores;
         this.catalog = catalog;
     }
+
     public SuperRent() {
+    }
+
+    public void addMember(Member member) {
+        members.add(member);
+    }
+
+    public void removeMember(Member member) {
+        members.remove(member);
+    }
+
+    public void addDailyLog(DailyLog dailyLog) {
+        dailyLogs.add(dailyLog);
+    }
+
+    public void removeDailyLog(DailyLog dailyLog) {
+        dailyLogs.remove(dailyLog);
+    }
+
+    public void addRental(Rental rental) {
+        rentals.add(rental);
+    }
+
+    public void removeRental(Rental rental) {
+        rentals.remove(rental);
+    }
+
+    public void addStore(Store store) {
+        stores.add(store);
+    }
+
+    public void removeStore(Store store) {
+        stores.remove(store);
     }
 
     public List<Member> getMembers() {
