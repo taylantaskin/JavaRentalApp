@@ -10,13 +10,23 @@ public class DailyLog {
 
     List<Rental> rentals;
 
-    public DailyLog(Date date, List<Rental> rentals) {
-        this.date = date;
+    public DailyLog(List<Rental> rentals) {
+        this.rentals = new ArrayList<>();
         this.rentals = rentals;
     }
+
     public DailyLog(Date date) {
         this.date = date;
         this.rentals = new ArrayList<>();
+    }
+    public DailyLog(){
+        date = new Date();
+        this.rentals = new ArrayList<>();
+
+    }
+
+    public void logRental(Rental rental) {
+        rentals.add(rental);
     }
 
     public Date getDate() {

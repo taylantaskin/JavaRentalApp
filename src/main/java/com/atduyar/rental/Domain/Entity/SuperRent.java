@@ -1,6 +1,7 @@
 package com.atduyar.rental.Domain.Entity;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -36,10 +37,27 @@ public class SuperRent {
         members.remove(member);
     }
 
-    public void addRental(Rental rental) {
-        rentals.add(rental);
+    private DailyLog getTodaysDailyLog(){
+        Date today = new Date();
+        DailyLog todaysDailyLog = null;
+        for (DailyLog dl : dailyLogs){
+            if (dl.getDate().equals(today)){
+                todaysDailyLog = dl;
+                break;
+            }
+        }
+        if (todaysDailyLog == null){
+            todaysDailyLog = new DailyLog(today);
+            dailyLogs.add(todaysDailyLog);
+        }
+        return todaysDailyLog;
     }
 
+    public void addRental(Rental rental) {
+        rentals.add(rental);
+        DailyLog todaysDailyLog = getTodaysDailyLog();
+        todaysDailyLog.logRental(rental);
+    }
     public void removeRental(Rental rental) {
         rentals.remove(rental);
     }
