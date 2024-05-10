@@ -1,6 +1,7 @@
 package com.atduyar.rental.Domain.Entity;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -19,10 +20,15 @@ public class DailyLog {
         this.date = date;
         this.rentals = new ArrayList<>();
     }
-    public DailyLog(){
-        date = new Date();
-        this.rentals = new ArrayList<>();
 
+    public DailyLog() {
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.HOUR_OF_DAY, 0);
+        cal.set(Calendar.MINUTE, 0);
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.MILLISECOND, 0);
+        date = cal.getTime();
+        this.rentals = new ArrayList<>();
     }
 
     public void logRental(Rental rental) {
@@ -40,7 +46,6 @@ public class DailyLog {
     public List<Rental> getRentals() {
         return rentals;
     }
-
 
     @Override
     public boolean equals(Object o) {

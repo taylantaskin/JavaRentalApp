@@ -1,6 +1,7 @@
 package com.atduyar.rental.Domain.Entity;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -13,7 +14,7 @@ public class SuperRent {
     private Catalog catalog;
 
     public SuperRent(List<Member> members, List<DailyLog> dailyLogs, List<Rental> rentals, List<Store> stores,
-                     Catalog catalog) {
+            Catalog catalog) {
         this.members = members;
         this.dailyLogs = dailyLogs;
         this.rentals = rentals;
@@ -37,16 +38,23 @@ public class SuperRent {
         members.remove(member);
     }
 
-    private DailyLog getTodaysDailyLog(){
-        Date today = new Date();
+    private DailyLog getTodaysDailyLog() {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(new Date());
+        cal.set(Calendar.HOUR_OF_DAY, 0);
+        cal.set(Calendar.MINUTE, 0);
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.MILLISECOND, 0);
+        Date today = cal.getTime();
+
         DailyLog todaysDailyLog = null;
-        for (DailyLog dl : dailyLogs){
-            if (dl.getDate().equals(today)){
+        for (DailyLog dl : dailyLogs) {
+            if (dl.getDate().equals(today)) {
                 todaysDailyLog = dl;
                 break;
             }
         }
-        if (todaysDailyLog == null){
+        if (todaysDailyLog == null) {
             todaysDailyLog = new DailyLog(today);
             dailyLogs.add(todaysDailyLog);
         }
@@ -58,6 +66,7 @@ public class SuperRent {
         DailyLog todaysDailyLog = getTodaysDailyLog();
         todaysDailyLog.logRental(rental);
     }
+
     public void removeRental(Rental rental) {
         rentals.remove(rental);
     }
