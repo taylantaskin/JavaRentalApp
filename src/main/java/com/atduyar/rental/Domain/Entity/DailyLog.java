@@ -1,4 +1,4 @@
-package Domain.Entity;
+package com.atduyar.rental.Domain.Entity;
 
 import java.util.Date;
 import java.util.List;
@@ -32,8 +32,10 @@ public class DailyLog {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         DailyLog dailyLog = (DailyLog) o;
         return Objects.equals(date, dailyLog.date) && Objects.equals(rentals, dailyLog.rentals);
     }
@@ -50,6 +52,5 @@ public class DailyLog {
                 ", rentals=" + rentals +
                 '}';
     }
-
 
 }
