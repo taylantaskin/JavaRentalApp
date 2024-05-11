@@ -25,7 +25,15 @@ public class Store {
     public void removeItem(Item item){
         stocks.remove(item);
     }
+    public Item  findItem(int serialNumber){
+        for (Item item:stocks){
+            if (item.getSerialNumber()==serialNumber){
+                return item;
+            }
+        }
 
+        return  null;
+    }
     public String getName() {
         return name;
     }

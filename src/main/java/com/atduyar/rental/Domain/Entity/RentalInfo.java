@@ -29,6 +29,14 @@ public class RentalInfo {
                 '}';
     }
 
+    public Date getDueDate() {
+        return dueDate;
+    }
+
+    public Item getItem() {
+        return item;
+    }
+
     public Rental getRental() {
         return rental;
     }

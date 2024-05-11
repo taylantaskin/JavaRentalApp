@@ -13,21 +13,22 @@ public class Rental {
     private Member member;
     private Store store;
     private List<Item> items;
-    private List<RentalInfo> infos;
+    private List<RentalInfo> rentalInfos;
+
 
     public Rental(Date rentalDate, Member member, Store store, List<Item> items, List<RentalInfo> infos) {
         this.rentalDate = rentalDate;
         this.member = member;
         this.store = store;
         this.items = items;
-        this.infos = infos;
+        this.rentalInfos = infos;
     }
 
     public Rental(Member member, Store store) {
         this.member = member;
         this.store = store;
         this.items = new ArrayList<>();
-        this.infos = new ArrayList<>();
+        this.rentalInfos = new ArrayList<>();
     }
 
     public void addItem(Item item) {
@@ -44,16 +45,27 @@ public class Rental {
     }
 
     public void complete() {
-        this.rentalDate = new Date();
+        rentalDate = new Date();
         for (Item item: items){
-            RentalInfo ri = new RentalInfo(item, this);
-            this.infos.add(ri);
+            rentalInfos.add(new RentalInfo(item,this));
             store.removeItem(item);
         }
     }
 
     public Date getRentalDate() {
         return rentalDate;
+    }
+
+    public List<RentalInfo> getRentalInfos() {
+        return rentalInfos;
+    }
+
+    public Store getStore() {
+        return store;
+    }
+
+    public Member getMember() {
+        return member;
     }
 
     @Override
@@ -63,7 +75,7 @@ public class Rental {
                 ",\n member=" + member +
                 ",\n store=" + store +
                 ",\n items=" + items +
-                ",\n infos=" + infos +
+                ",\n infos=" + rentalInfos +
                 '}';
     }
 
@@ -76,12 +88,12 @@ public class Rental {
         Rental rental = (Rental) o;
         return Objects.equals(rentalDate, rental.rentalDate) && Objects.equals(member, rental.member)
                 && Objects.equals(store, rental.store) && Objects.equals(items, rental.items)
-                && Objects.equals(infos, rental.infos);
+                && Objects.equals(rentalInfos, rental.rentalInfos);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(rentalDate, member, store, items, infos);
+        return Objects.hash(rentalDate, member, store, items, rentalInfos);
     }
 
     public int getPrice() {

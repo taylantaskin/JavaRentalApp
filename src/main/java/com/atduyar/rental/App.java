@@ -1,21 +1,24 @@
 package com.atduyar.rental;
 
+import com.atduyar.rental.Controls.Common.Receipt;
+import com.atduyar.rental.Controls.MembershipControl;
+import com.atduyar.rental.Controls.RentalControl;
 import com.atduyar.rental.Domain.Entity.*;
 import com.atduyar.rental.Domain.Enums.TitleType;
 
 public class App {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         SuperRent superRent =new SuperRent();
         Store store = new Store("aralgame", "90554", "bosna", "Taylan");
         Catalog catalog = new Catalog("Summer Catalaog");
         superRent.addStore(store);
 
-        Member member = new Member(1L, "Ahmet", "ılıca", "90535");
+        Member member = new Member("230302292", "Ahmet", "ılıca", "90535");
         superRent.addMember(member);
 
         Title god = new Game("god of war", "action game", 1, TitleType.NEW_RELEASE, "SONY", 2022);
         catalog.addTitle(god);
-        Title moz = new Music(2, "Mozart", "clasic", TitleType.NORMAL, "NONE", "Mozart", 3000, 13);
+        Title moz = new Music(2, "Mozart 13", "clasic", TitleType.NORMAL, "NONE", "Mozart", 3000, 13);
         catalog.addTitle(moz);
         superRent.setCatalog(catalog);
 
@@ -36,19 +39,15 @@ public class App {
         System.out.println(game1.getPrice());
         System.out.println(music1.getPrice());
 
+        RentalControl rc = new RentalControl(superRent, store);
+        MembershipControl mc = new MembershipControl(superRent);
 
-        Rental rental = new Rental(member, store);
-        rental.addItem(game1);
-        rental.addItem(music1);
-        System.out.println(rental.getPrice());
-        rental.complete();
-        superRent.addRental(rental);
+        Rental rental1 = rc.createRental(mc.findMember("230302292"));
+        rc.addItem(rental1, 1114);
+        rc.addItem(rental1, 1117);
+        System.out.println(rc.complete(rental1));
 
-        Rental rental1 = new Rental(member, store);
-        rental1.addItem(game2);
-        rental1.complete();
-        superRent.addRental(rental1);
 
-        System.out.println(rental);
+        System.out.println(rental1);
     }
 }
