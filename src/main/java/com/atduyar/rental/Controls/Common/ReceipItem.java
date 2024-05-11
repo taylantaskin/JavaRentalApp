@@ -23,6 +23,18 @@ public class ReceipItem {
         price = item.getPrice();
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public Date getReturnDate() {
+        return returnDate;
+    }
+
     @Override
     public String toString() {
         return String.format("%s\t %.2f$\t %s\n", name,price,returnDate);

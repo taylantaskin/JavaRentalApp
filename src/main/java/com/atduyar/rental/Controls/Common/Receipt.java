@@ -25,6 +25,22 @@ public class Receipt {
         this.totalPrice = rental.getPrice();
     }
 
+    public List<ReceipItem> getItems() {
+        return items;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
     @Override
     public String toString() {
         StringBuilder s = new StringBuilder();

@@ -1,6 +1,7 @@
 package com.atduyar.rental;
 
 import com.atduyar.rental.Controls.Common.Receipt;
+import com.atduyar.rental.Controls.ItemsControl;
 import com.atduyar.rental.Controls.MembershipControl;
 import com.atduyar.rental.Controls.RentalControl;
 import com.atduyar.rental.Domain.Entity.*;
@@ -39,12 +40,17 @@ public class App {
         System.out.println(game1.getPrice());
         System.out.println(music1.getPrice());
 
-        RentalControl rc = new RentalControl(superRent, store);
         MembershipControl mc = new MembershipControl(superRent);
+        RentalControl rc = new RentalControl(superRent, store);
+        ItemsControl ic = new ItemsControl(store);
 
         Rental rental1 = rc.createRental(mc.findMember("230302292"));
+        System.out.println(ic.getItemInformation(1114));
         rc.addItem(rental1, 1114);
+        System.out.println(rc.getTotalPrice(rental1));
+        System.out.println(ic.getItemInformation(1117));
         rc.addItem(rental1, 1117);
+        System.out.println(rc.getTotalPrice(rental1));
         System.out.println(rc.complete(rental1));
 
 
