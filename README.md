@@ -30,3 +30,10 @@ back to [Quick Links](#quick-links)
 ### Complete
 back to [Quick Links](#quick-links)
 ![Complete](./UML_SequenceDiagram_Complete.jpg)
+
+# Contributors
+1. Taylan Taşkın
+2. Ahmet Tarık Duyar
+3. 
+
+   
