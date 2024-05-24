@@ -1,6 +1,5 @@
-package com.atduyar.rental;
+package com.atduyar.rental.cli;
 
-import com.atduyar.rental.Controls.Common.Receipt;
 import com.atduyar.rental.Controls.ItemsControl;
 import com.atduyar.rental.Controls.MembershipControl;
 import com.atduyar.rental.Controls.RentalControl;
@@ -9,7 +8,7 @@ import com.atduyar.rental.Domain.Enums.TitleType;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        SuperRent superRent =new SuperRent();
+        SuperRent superRent = new SuperRent();
         Store store = new Store("aralgame", "90554", "bosna", "Taylan");
         Catalog catalog = new Catalog("Summer Catalaog");
         superRent.addStore(store);
@@ -36,7 +35,6 @@ public class App {
         Item music3 = new Item(1119, moz);
         store.storeItem(music3);
 
-
         System.out.println(game1.getPrice());
         System.out.println(music1.getPrice());
 
@@ -52,7 +50,6 @@ public class App {
         rc.addItem(rental1, 1117);
         System.out.println(rc.getTotalPrice(rental1));
         System.out.println(rc.complete(rental1));
-
 
         System.out.println(rental1);
     }

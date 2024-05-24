@@ -1,8 +1,8 @@
 JAVA_EXEC = mvn exec:java
 JAVA_COMPILE = mvn compile
 
-MAIN_CLASS = com.atduyar.rental.UI.SwingApp
-MAIN_CLASS_CLI = com.atduyar.rental.App
+MAIN_CLASS = com.atduyar.rental.UI.App
+MAIN_CLASS_CLI = com.atduyar.rental.cli.App
 
 run: compile ui
 
