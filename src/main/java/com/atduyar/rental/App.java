@@ -6,22 +6,26 @@ import com.atduyar.rental.Controls.MembershipControl;
 import com.atduyar.rental.Controls.RentalControl;
 import com.atduyar.rental.Domain.Entity.*;
 import com.atduyar.rental.Domain.Enums.TitleType;
+import com.atduyar.rental.Domain.Factoryies.TitleFactory;
 
 public class App {
     public static void main(String[] args) throws Exception {
         SuperRent superRent =new SuperRent();
         Store store = new Store("aralgame", "90554", "bosna", "Taylan");
-        Catalog catalog = new Catalog("Summer Catalaog");
         superRent.addStore(store);
+
+        Catalog catalog = new Catalog("Summer Catalaog");
+        superRent.setCatalog(catalog);
 
         Member member = new Member("230302292", "Ahmet", "ılıca", "90535");
         superRent.addMember(member);
 
-        Title god = new Game("god of war", "action game", 1, TitleType.NEW_RELEASE, "SONY", 2022);
+        Title god = TitleFactory.createTitle("Game","god of war", "action game", 1, TitleType.NEW_RELEASE, "SONY", 2022);
         catalog.addTitle(god);
-        Title moz = new Music(2, "Mozart 13", "clasic", TitleType.NORMAL, "NONE", "Mozart", 3000, 13);
-        catalog.addTitle(moz);
-        superRent.setCatalog(catalog);
+
+        Title moz =TitleFactory.createTitle("music","Mozart 13", "clasic", 2, TitleType.NORMAL, "NONE", "Mozart", 3000, 13);
+    catalog.addTitle(moz);
+
 
         Item game1 = new Item(1114, god);
         store.storeItem(game1);

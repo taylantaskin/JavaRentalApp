@@ -10,7 +10,7 @@ public class Music extends Title {
     private int duration;
     private int tracks;
 
-    public Music(int rentalCode, String name, String description, TitleType type, String producer, String singer,
+    public Music(String name, String description, int rentalCode, TitleType type, String producer, String singer,
             int duration, int tracks) {
         super(name, description, rentalCode, type);
         this.producer = producer;

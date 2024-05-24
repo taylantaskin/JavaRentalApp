@@ -20,9 +20,12 @@ public class Movie extends Title {
         return day*3;
     }
 
-    public Movie(int rentalCode, String name, String description, TitleType type, String director) {
+    public Movie(String name, String description, int rentalCode, TitleType type, String director, String cast, int duraction, int year) {
         super(name, description, rentalCode, type);
         this.director = director;
+        this.cast = cast;
+        this.duraction = duraction;
+        this.year = year;
     }
 
     public String getDirector() {

@@ -1,5 +1,8 @@
 package com.atduyar.rental.Domain.Entity;
 
+import com.atduyar.rental.Domain.Entity.Strategies.IPriceStrategy;
+import com.atduyar.rental.Domain.Factoryies.PriceStrategyFactory;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -14,6 +17,7 @@ public class Rental {
     private Store store;
     private List<Item> items;
     private List<RentalInfo> rentalInfos;
+    private IPriceStrategy priceStrategy;
 
 
     public Rental(Date rentalDate, Member member, Store store, List<Item> items, List<RentalInfo> infos) {
@@ -22,6 +26,7 @@ public class Rental {
         this.store = store;
         this.items = items;
         this.rentalInfos = infos;
+        this.priceStrategy = PriceStrategyFactory.createPriceStrategy();
     }
 
     public Rental(Member member, Store store) {
@@ -29,6 +34,7 @@ public class Rental {
         this.store = store;
         this.items = new ArrayList<>();
         this.rentalInfos = new ArrayList<>();
+        this.priceStrategy = PriceStrategyFactory.createPriceStrategy();
     }
 
     public void addItem(Item item) {
@@ -52,6 +58,9 @@ public class Rental {
         }
     }
 
+    public void setPriceStrategy(IPriceStrategy priceStrategy) {
+        this.priceStrategy = priceStrategy;
+    }
     public Date getRentalDate() {
         return rentalDate;
     }
@@ -105,7 +114,7 @@ public class Rental {
          * for (int i;i<items.size();i++){
          * total = total + items.get(i).getPrice();
          */
-        return total;
+        return (int) priceStrategy.getPrice(total);
     }
 
 }
